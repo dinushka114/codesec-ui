@@ -19,7 +19,7 @@ const Favourites = () => {
          myFavorites && myFavorites.map((fav, index) => {
             return (
               <div>
-                <img className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover rounded-3xl" src={fav.strMealThumb} alt="" />
+                <img className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover rounded-3xl mt-8" src={fav.strMealThumb} alt="" />
                 <div className='mt-4'>
                   <p className='font-normal text-gray-500 flex'>{fav.strCategory} <FavIconHeart onClick={()=>removeFavorite(fav.idMeal)} icon={HeartSolid} /></p>
                   <p className='font-bold text-wrap'>{fav.strMeal}</p>

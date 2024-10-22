@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/logo-2.jpeg";
 import Logout from "../../assets/images/logout.png";
 import { Link } from 'react-router-dom';
 import AppContext from '../../AppContext';
@@ -10,9 +10,9 @@ const Navbar = () => {
     
 
     return (
-        <ul className="flex justify-between container mx-auto items-center p-4 rounded">
+        <ul className="flex justify-between container mx-auto pt-4 pb-4 items-center rounded">
             <li className="mr-3">
-                <img src={Logo} width={100} alt="Company Logo" />
+                <img src={Logo} width={80} alt="Company Logo" />
             </li>
             <li className="flex space-x-3">
                <Link to={'/dashboard'}>

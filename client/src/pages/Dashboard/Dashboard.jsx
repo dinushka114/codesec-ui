@@ -8,10 +8,12 @@ const Dashboard = () => {
   return (
     <>
         <Navbar />
+        <div style={{backgroundColor:'#fef8f9', minHeight:'100vh'}}>
         <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/favourites' element={<Favourites/>} />
         </Routes>
+        </div>
     </>
   )
 }

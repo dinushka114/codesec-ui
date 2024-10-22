@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const AppContext = createContext();
 
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'https://codesec-production.up.railway.app';
 axios.defaults.withCredentials = true;
 
 export function AppProvider({ children }) {

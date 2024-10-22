@@ -84,17 +84,9 @@ const SignUp = () => {
 
     const onSubmit = async () => {
 
-        // Object.entries(registerData).forEach(([key, value]) => {
-        //     validateFormData(key, value)
-        //   });
-
-        // if(Object.keys(errors).length == 0){
-        //     await register(registerData);
-        // }else{
-        //     alert("You cannot")
-        // }
-       setRegisterError(null);
-       let response =  await register(registerData);
+        setRegisterError(null);
+        await register(registerData);
+        
 
     }
 
@@ -120,12 +112,12 @@ const SignUp = () => {
                                 <CustomTextBox label={"Phone number"} name="phone" value={registerData.phone} onChangeInput={handleInputChange} />
                                 <p className='text-xs text-[#fe578c] font-semibold'>{errors.phone}</p>
                                 <CustomTextBox label={"Confirm Password"} name="confirmPassword" value={registerData.confirmPassword} onChangeInput={handleInputChange} />
-                                <p className='text-xs text-[#fe578c] font-semibold'>{errors.confirmPassword}</p>
+                                <p className='text-xs text-[#fe578c] font-semibold mb-3'>{errors.confirmPassword}</p>
                             </div>
                         </div>
 
                          {
-                            registerError && <p className='text-xs text-[#fe578c] font-semibold mb-3'>{registerError}</p>
+                            registerError && <p className='text-xs text-[#fe578c] font-semibold mb-3'>{registerError.length > 10 ? "Please fill the invalid inputs" : registerError }</p>
                          } 
 
 

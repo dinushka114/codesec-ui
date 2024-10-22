@@ -67,7 +67,7 @@ const SignIn = () => {
           <CustomTextBox label={"Email address"} type={"email"} name="email" value={authData.email} onChangeInput={handleInputChange} />
           <p className='text-xs text-[#fe578c] font-semibold'>{errors.email}</p>
           <CustomTextBox label={"Password"} type={"password"} name={"password"} value={authData.password} onChangeInput={handleInputChange} />
-          <p className='text-xs text-[#fe578c] font-semibold'>{errors.password}</p>
+          <p className='text-xs text-[#fe578c] font-semibold mb-3'>{errors.password}</p>
           <CustomButton text={"SIGN IN"} isRoundedFull={false} onClick={onSubmit} />
           {
             loginError && <p className='text-xs text-[#fe578c] font-semibold mt-3 text-center'>{loginError}</p>
