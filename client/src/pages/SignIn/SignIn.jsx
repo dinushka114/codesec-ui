@@ -55,6 +55,9 @@ const SignIn = () => {
   }
 
   const onSubmit = async () => {
+
+    setLoginError(null);
+
     validateFormData("email", authData.email);
     validateFormData("password", authData.password);
   
