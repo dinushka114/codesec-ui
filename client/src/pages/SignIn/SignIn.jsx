@@ -8,11 +8,11 @@ import AppContext from '../../AppContext'
 
 const SignIn = () => {
 
-  const { login, loginError } = useContext(AppContext);
+  const { login, loginError, setLoginError } = useContext(AppContext);
 
   const [authData, setAuthData] = useState({
-    email: "",
-    password: ""
+    email: null,
+    password: null
   })
 
   const [errors, setErrors] = useState({});
@@ -55,8 +55,21 @@ const SignIn = () => {
   }
 
   const onSubmit = async () => {
+    validateFormData("email", authData.email);
+    validateFormData("password", authData.password);
+  
+
+    if (errors.email || errors.password || !authData.email || !authData.password) {
+      setLoginError("Please provide email and password");
+      return;
+    }
+  
+    setLoginError(null);
     await login(authData.email, authData.password);
+
+
   }
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

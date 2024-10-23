@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const AppContext = createContext();
 
 axios.defaults.baseURL = 'https://codesec-production.up.railway.app';
+// axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.withCredentials = true;
 
 export function AppProvider({ children }) {
@@ -138,6 +139,7 @@ export function AppProvider({ children }) {
             getCategories,
             categories,
             loginError,
+            setLoginError,
             mealsByCategory,
             getMealsByCategories,
             saveFavorite,

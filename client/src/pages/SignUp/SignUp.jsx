@@ -85,6 +85,32 @@ const SignUp = () => {
     const onSubmit = async () => {
 
         setRegisterError(null);
+
+        validateFormData("firstName", registerData.firstName);
+        validateFormData("lastName", registerData.lastName);
+        validateFormData("email", registerData.email);
+        validateFormData("phone", registerData.phone);
+        validateFormData("password", registerData.password);
+        validateFormData("confirmPassword", registerData.confirmPassword);
+
+        if(errors.firstName ||
+            errors.lastName ||
+            errors.email ||
+            errors.phone ||
+            errors.password ||
+            errors.confirmPassword ||
+            !registerData.firstName ||
+            !registerData.lastName ||
+            !registerData.email ||
+            !registerData.phone ||
+            !registerData.password ||
+            !registerData.confirmPassword
+        ){
+            setRegisterError("Please fill all the details");
+            return;
+        }
+
+        setRegisterError(null);
         await register(registerData);
         
 
@@ -117,7 +143,7 @@ const SignUp = () => {
                         </div>
 
                          {
-                            registerError && <p className='text-xs text-[#fe578c] font-semibold mb-3'>{registerError.length > 10 ? "Please fill the invalid inputs" : registerError }</p>
+                            registerError && <p className='text-xs text-[#fe578c] font-semibold mb-3'>{registerError }</p>
                          } 
 
 

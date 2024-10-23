@@ -7,10 +7,11 @@ import FavIconHeart from '../../../components/FavIcon/FavIcon';
 
 const Home = () => {
 
-  const { categories, getCategories, mealsByCategory, getMealsByCategories, saveFavorite, icons, checkCategory, setCheckCategory } = useContext(AppContext);
+  const { categories, getCategories, mealsByCategory, getMealsByCategories, saveFavorite, icons, checkCategory, setCheckCategory, myFavorites,getFavorites } = useContext(AppContext);
 
   useEffect(() => {
     getCategories();
+    getFavorites();
   }, [])
 
   return (
@@ -39,6 +40,7 @@ const Home = () => {
           mealsByCategory && mealsByCategory.map((meal, index) => {
             return (
               <div>
+               
                 <img className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover rounded-3xl" src={meal.strMealThumb} alt="" />
                 <div className='mt-4'>
                   <p className='font-normal text-gray-500 flex'>{meal.strCategory} <FavIconHeart onClick={() => saveFavorite(meal, index)} icon={icons[index] ? HeartSolid : HeartRegular} />  </p>
