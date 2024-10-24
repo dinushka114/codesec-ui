@@ -95,9 +95,15 @@ export function AppProvider({ children }) {
 
     const saveFavorite = async (newFavorite, index) => {
 
+        // console.log(index);
+
+        // check meal contains in the favorites
         const exists = myFavorites.find(fav => fav.idMeal == newFavorite.idMeal);
 
         if (!exists) {
+
+            console.log("Saved in fav " + newFavorite.idMeal)
+
             setMyFavorites(prevFavorites => [...prevFavorites, newFavorite]);
 
             setIcons(prevIcons =>{
@@ -107,6 +113,20 @@ export function AppProvider({ children }) {
             })
 
             await axios.post(`${API}/user/favourite`, {"meal":newFavorite});
+
+        }else{
+
+            console.log("FAV index = " + index)
+
+            setIcons(prevIcons =>{
+                const newIcons = [...prevIcons]
+                newIcons[index] = !newIcons[index];
+                return newIcons;
+            })
+
+            console.log("already in the favorite")
+
+            await removeFavorite(newFavorite.idMeal);
         }
 
     }
@@ -115,6 +135,8 @@ export function AppProvider({ children }) {
 
         const filteredServices = myFavorites.filter(fav=>fav.idMeal !== id);
         setMyFavorites(filteredServices);
+
+        console.log("Removed from fav " + id)
 
         await axios.delete(`${API}/user/favourite/${id}`);
 
